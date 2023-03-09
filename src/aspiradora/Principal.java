@@ -4,17 +4,17 @@
  */
 package aspiradora;
 
-/**
- *
- * @author Bryan De Anda
- */
+
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    int x,y;
+    
     public Principal() {
         initComponents();
+        aspiradora1.setVisible(false);
+        aspiradora2.setVisible(false);
+        basura1.setVisible(false);
+        basura2.setVisible(false);
     }
 
     /**
@@ -58,6 +58,15 @@ public class Principal extends javax.swing.JFrame {
         aspiradora1.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
                 aspiradora1HierarchyChanged(evt);
+            }
+        });
+        aspiradora1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                aspiradora1AncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         aspiradora1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -186,6 +195,10 @@ public class Principal extends javax.swing.JFrame {
             sucio.setText("Ningun cuarto esta sucios");
         }
     }//GEN-LAST:event_IniciarActionPerformed
+
+    private void aspiradora1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_aspiradora1AncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aspiradora1AncestorMoved
 
     /**
      * @param args the command line arguments

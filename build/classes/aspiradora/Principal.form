@@ -52,6 +52,7 @@
       </Properties>
       <Events>
         <EventHandler event="hierarchyChanged" listener="java.awt.event.HierarchyListener" parameters="java.awt.event.HierarchyEvent" handler="aspiradora1HierarchyChanged"/>
+        <EventHandler event="ancestorMoved" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="aspiradora1AncestorMoved"/>
         <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="aspiradora1ComponentHidden"/>
       </Events>
       <Constraints>
