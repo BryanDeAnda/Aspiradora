@@ -4,6 +4,10 @@
  */
 package aspiradora;
 
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class Principal extends javax.swing.JFrame {
 
@@ -36,6 +40,8 @@ public class Principal extends javax.swing.JFrame {
         limpio = new javax.swing.JLabel();
         sucio = new javax.swing.JLabel();
         Iniciar = new javax.swing.JButton();
+        barprog = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(207, 153, 46));
@@ -124,6 +130,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel1.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
 
+        barprog.setStringPainted(true);
+        jPanel1.add(barprog, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, 20));
+
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel1.setText("Batería de Aspiradora");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 390));
 
         pack();
@@ -194,6 +207,21 @@ public class Principal extends javax.swing.JFrame {
             limpio.setText("Los dos cuartos estan limpios");
             sucio.setText("Ningun cuarto esta sucios");
         }
+        Thread hilo= new Thread(){
+            @Override
+            public void run(){
+                for (int i=1; i<=100;i++){
+                    try {
+                        sleep(10);
+                        barprog.setValue(i);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                }   
+            }
+        };
+        hilo.start();
+                
     }//GEN-LAST:event_IniciarActionPerformed
 
     private void aspiradora1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_aspiradora1AncestorMoved
@@ -240,9 +268,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel aspiCuarto;
     private javax.swing.JLabel aspiradora1;
     private javax.swing.JLabel aspiradora2;
+    private javax.swing.JProgressBar barprog;
     private javax.swing.JLabel basura1;
     private javax.swing.JLabel basura2;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel limpio;
     private javax.swing.JLabel sucio;
