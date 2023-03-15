@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class Principal extends javax.swing.JFrame {
 
-    int x,y;
+    int punto;
     
     public Principal() {
         initComponents();
@@ -57,15 +57,21 @@ public class Principal extends javax.swing.JFrame {
                     basura1.setVisible(false);
                     limpio.setText("Ambos cuartos están Limpios");
                     sucio.setText("Ningún cuarto está Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }else{
                     dorm();
                     aspiradora2.setVisible(false);
                     aspiradora1.setVisible(true);
                     aspiCuarto.setText("Aspiradora en el cuarto Rojo");
+                    punto = punto - 1;
+                    barprog.setValue(punto);
                     dorm();
                     basura1.setVisible(false);
                     limpio.setText("Ambos cuartos están Limpios");
                     sucio.setText("Ningún cuarto está Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }
             }
             else if(basuAleatorio == 2){
@@ -78,15 +84,21 @@ public class Principal extends javax.swing.JFrame {
                     aspiradora1.setVisible(false);
                     aspiradora2.setVisible(true);
                     aspiCuarto.setText("Aspiradora en el cuarto Azul");
+                    punto = punto - 1;
+                    barprog.setValue(punto);
                     dorm();
                     basura2.setVisible(false);
                     limpio.setText("Ambos cuartos están Limpios");
                     sucio.setText("Ningún cuarto está Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }else{
                     dorm();
                     basura2.setVisible(false);
                     limpio.setText("Ambos cuartos están Limpios");
                     sucio.setText("Ningún cuarto está Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }
             }
             else if(basuAleatorio == 3){
@@ -99,27 +111,39 @@ public class Principal extends javax.swing.JFrame {
                     basura1.setVisible(false);
                     limpio.setText("Cuarto Rojo Limpio");
                     sucio.setText("Cuarto Azul Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                     dorm();
                     aspiradora1.setVisible(false);
                     aspiradora2.setVisible(true);
                     aspiCuarto.setText("Aspiradora en el cuarto Azul");
+                    punto = punto - 1;
+                    barprog.setValue(punto);
                     dorm();
                     basura2.setVisible(false);
                     limpio.setText("Ambos cuartos están Limpios");
                     sucio.setText("Ningún cuarto está Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }else{
                     dorm();
                     basura2.setVisible(false);
                     limpio.setText("Cuarto Azul Limpio");
                     sucio.setText("Cuarto Rojo Sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                     dorm();
                     aspiradora2.setVisible(false);
                     aspiradora1.setVisible(true);
                     aspiCuarto.setText("Aspiradora en el cuarto Rojo");
+                    punto = punto - 1;
+                    barprog.setValue(punto);
                     dorm();
                     basura1.setVisible(false);
                     limpio.setText("Ambos cuartos están limpios");
                     sucio.setText("Ningún cuarto está sucio");
+                    punto = punto - 2;
+                    barprog.setValue(punto);
                 }
             }
             else if(basuAleatorio == 4){
@@ -283,15 +307,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_basura1AncestorAdded
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
-        Thread hilo= new Thread(){
+        punto = 100;
+        barprog.setValue(100);
+        Thread hilo = new Thread(){
             @Override
             public void run(){
-                for (int i=100; i>=1;i--){
+                while(punto>=1){
                     try {
                         sleep(1000);
                         accprin();
-                        //sleep(2000);
-                        barprog.setValue(i);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
                     }  

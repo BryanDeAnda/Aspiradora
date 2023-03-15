@@ -10,7 +10,7 @@ package aspiradora;
  */
 public class Aspiradora {
     public static void main(String[] args) {
-        System.out.println("Hola Mundo");
+        System.out.println("hola Mundo");
         Principal interfaz = new Principal();
         interfaz.setVisible(true);
     }
