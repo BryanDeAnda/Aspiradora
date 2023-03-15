@@ -19,6 +19,115 @@ public class Principal extends javax.swing.JFrame {
         aspiradora2.setVisible(false);
         basura1.setVisible(false);
         basura2.setVisible(false);
+        barprog.setValue(100);
+    }
+    public void dorm(){
+        try {
+            sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void accprin(){
+        int aspiAleatorio = (int) (Math.random()*2+1);
+        int basuAleatorio = (int) (Math.random()*4+1);
+        
+        
+        //Generar aspiradora
+        if(aspiAleatorio == 1){
+            aspiradora1.setVisible(true);
+            aspiradora2.setVisible(false);
+            aspiCuarto.setText("Aspiradora en el cuarto Rojo");
+        }
+        else{
+            aspiradora2.setVisible(true);
+            aspiradora1.setVisible(false);
+            aspiCuarto.setText("Aspiradora en el cuarto Azul");
+        }
+        
+            //Generar basura
+            if(basuAleatorio == 1){
+                basura1.setVisible(true);
+                basura2.setVisible(false);
+                limpio.setText("Cuarto Azul Limpio");
+                sucio.setText("Cuarto Rojo Sucio");
+                if (aspiAleatorio == 1){
+                    dorm();
+                    basura1.setVisible(false);
+                    limpio.setText("Ambos cuartos están Limpios");
+                    sucio.setText("Ningún cuarto está Sucio");
+                }else{
+                    dorm();
+                    aspiradora2.setVisible(false);
+                    aspiradora1.setVisible(true);
+                    aspiCuarto.setText("Aspiradora en el cuarto Rojo");
+                    dorm();
+                    basura1.setVisible(false);
+                    limpio.setText("Ambos cuartos están Limpios");
+                    sucio.setText("Ningún cuarto está Sucio");
+                }
+            }
+            else if(basuAleatorio == 2){
+                basura2.setVisible(true);
+                basura1.setVisible(false);
+                limpio.setText("Cuarto rojo Limpio");
+                sucio.setText("Cuarto azul Sucio");
+                if (aspiAleatorio == 1){
+                    dorm();
+                    aspiradora1.setVisible(false);
+                    aspiradora2.setVisible(true);
+                    aspiCuarto.setText("Aspiradora en el cuarto Azul");
+                    dorm();
+                    basura2.setVisible(false);
+                    limpio.setText("Ambos cuartos están Limpios");
+                    sucio.setText("Ningún cuarto está Sucio");
+                }else{
+                    dorm();
+                    basura2.setVisible(false);
+                    limpio.setText("Ambos cuartos están Limpios");
+                    sucio.setText("Ningún cuarto está Sucio");
+                }
+            }
+            else if(basuAleatorio == 3){
+                basura2.setVisible(true);
+                basura1.setVisible(true);
+                limpio.setText("Ningún cuarto está Limpio");
+                sucio.setText("Ambos cuartos están Sucios");
+                if (aspiAleatorio == 1){
+                    dorm();
+                    basura1.setVisible(false);
+                    limpio.setText("Cuarto Rojo Limpio");
+                    sucio.setText("Cuarto Azul Sucio");
+                    dorm();
+                    aspiradora1.setVisible(false);
+                    aspiradora2.setVisible(true);
+                    aspiCuarto.setText("Aspiradora en el cuarto Azul");
+                    dorm();
+                    basura2.setVisible(false);
+                    limpio.setText("Ambos cuartos están Limpios");
+                    sucio.setText("Ningún cuarto está Sucio");
+                }else{
+                    dorm();
+                    basura2.setVisible(false);
+                    limpio.setText("Cuarto Azul Limpio");
+                    sucio.setText("Cuarto Rojo Sucio");
+                    dorm();
+                    aspiradora2.setVisible(false);
+                    aspiradora1.setVisible(true);
+                    aspiCuarto.setText("Aspiradora en el cuarto Rojo");
+                    dorm();
+                    basura1.setVisible(false);
+                    limpio.setText("Ambos cuartos están limpios");
+                    sucio.setText("Ningún cuarto está sucio");
+                }
+            }
+            else if(basuAleatorio == 4){
+                basura2.setVisible(false);
+                basura1.setVisible(false);
+                limpio.setText("Ambos cuartos están Limpios");
+                sucio.setText("Ningún cuarto está Sucio");
+            }
     }
 
     /**
@@ -58,7 +167,7 @@ public class Principal extends javax.swing.JFrame {
                 aspiradora2ComponentHidden(evt);
             }
         });
-        getContentPane().add(aspiradora2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 60, 40));
+        getContentPane().add(aspiradora2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 60, 40));
 
         aspiradora1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aspiradora/Imagenes/aspiradora.png"))); // NOI18N
         aspiradora1.addHierarchyListener(new java.awt.event.HierarchyListener() {
@@ -80,7 +189,7 @@ public class Principal extends javax.swing.JFrame {
                 aspiradora1ComponentHidden(evt);
             }
         });
-        getContentPane().add(aspiradora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 60, 40));
+        getContentPane().add(aspiradora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 60, 40));
 
         basura1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aspiradora/Imagenes/basura.png"))); // NOI18N
         basura1.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -92,7 +201,7 @@ public class Principal extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        getContentPane().add(basura1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 50, 40));
+        getContentPane().add(basura1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 50, 40));
 
         basura2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aspiradora/Imagenes/basura.png"))); // NOI18N
         basura2.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -104,38 +213,45 @@ public class Principal extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        getContentPane().add(basura2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 50, 40));
+        getContentPane().add(basura2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 50, 40));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aspiradora/Imagenes/cuartos.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 270));
 
-        jPanel1.setBackground(new java.awt.Color(194, 58, 58));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        aspiCuarto.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        aspiCuarto.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         jPanel1.add(aspiCuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 340, 30));
 
-        limpio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        limpio.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        limpio.setForeground(new java.awt.Color(51, 102, 0));
         jPanel1.add(limpio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 330, 30));
 
-        sucio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        sucio.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        sucio.setForeground(new java.awt.Color(153, 0, 0));
         jPanel1.add(sucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 340, 30));
 
         Iniciar.setBackground(new java.awt.Color(255, 255, 255));
+        Iniciar.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         Iniciar.setText("Iniciar");
+        Iniciar.setBorder(null);
+        Iniciar.setBorderPainted(false);
+        Iniciar.setFocusPainted(false);
+        Iniciar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IniciarActionPerformed(evt);
             }
         });
-        jPanel1.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+        jPanel1.add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 60, 30));
 
         barprog.setStringPainted(true);
-        jPanel1.add(barprog, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, 20));
+        jPanel1.add(barprog, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 320, 170, 30));
 
-        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel1.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Batería de Aspiradora");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 390));
 
@@ -167,52 +283,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_basura1AncestorAdded
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
-        int aspiAleatorio = (int) (Math.random()*2+1);
-        int basuAleatorio = (int) (Math.random()*4+1);
-        
-        //Generar aspiradora
-        if(aspiAleatorio == 1){
-            aspiradora1.setVisible(true);
-            aspiradora2.setVisible(false);
-            aspiCuarto.setText("Aspiradora en el cuarto rojo");
-        }
-        else{
-            aspiradora2.setVisible(true);
-            aspiradora1.setVisible(false);
-            aspiCuarto.setText("Aspiradora en el cuarto Azul");
-        }
-        
-        //Generar basura
-        if(basuAleatorio == 1){
-            basura1.setVisible(true);
-            basura2.setVisible(false);
-            limpio.setText("Cuarto azul limpio");
-            sucio.setText("Cuarto rojo sucio");
-        }
-        else if(basuAleatorio == 2){
-            basura2.setVisible(true);
-            basura1.setVisible(false);
-            limpio.setText("Cuarto rojo limpio");
-            sucio.setText("Cuarto azul sucio");
-        }
-        else if(basuAleatorio == 3){
-            basura2.setVisible(true);
-            basura1.setVisible(true);
-            limpio.setText("Ningún cuarto está limpio");
-            sucio.setText("Los dos cuartos están sucios");
-        }
-        else if(basuAleatorio == 4){
-            basura2.setVisible(false);
-            basura1.setVisible(false);
-            limpio.setText("Los dos cuartos están limpios");
-            sucio.setText("Ningún cuarto está sucio");
-        }
         Thread hilo= new Thread(){
             @Override
             public void run(){
                 for (int i=100; i>=1;i--){
                     try {
-                        sleep(10);
+                        sleep(1000);
+                        accprin();
+                        //sleep(2000);
                         barprog.setValue(i);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
