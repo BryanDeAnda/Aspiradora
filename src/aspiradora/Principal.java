@@ -198,19 +198,19 @@ public class Principal extends javax.swing.JFrame {
         else if(basuAleatorio == 3){
             basura2.setVisible(true);
             basura1.setVisible(true);
-            limpio.setText("Ningun cuarto esta limpio");
-            sucio.setText("Los dos cuartos estan sucios");
+            limpio.setText("Ningún cuarto está limpio");
+            sucio.setText("Los dos cuartos están sucios");
         }
         else if(basuAleatorio == 4){
             basura2.setVisible(false);
             basura1.setVisible(false);
-            limpio.setText("Los dos cuartos estan limpios");
-            sucio.setText("Ningun cuarto esta sucios");
+            limpio.setText("Los dos cuartos están limpios");
+            sucio.setText("Ningún cuarto está sucio");
         }
         Thread hilo= new Thread(){
             @Override
             public void run(){
-                for (int i=1; i<=100;i++){
+                for (int i=100; i>=1;i--){
                     try {
                         sleep(10);
                         barprog.setValue(i);
